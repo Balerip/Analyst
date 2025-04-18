@@ -3,7 +3,6 @@ echo "Starting Ollama server..."
 ollama serve &
 OLLAMA_PID=$!
 
-# Better health check for Ollama API
 echo "Waiting for Ollama API to be ready..."
 MAX_RETRIES=30
 RETRY_COUNT=0
@@ -21,4 +20,4 @@ echo "Pulling LLaMA model..."
 ollama pull llama2
 
 echo "Starting MindsDB..."
-exec python -m mindsdb --api=http://0.0.0.0:47334
+exec python -m mindsdb
