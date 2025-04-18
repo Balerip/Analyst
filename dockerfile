@@ -12,7 +12,9 @@ WORKDIR /app
 COPY . /app
 
 # Install MindsDB
-RUN pip install --upgrade pip && pip install -e .[all]
+RUN pip install --upgrade pip && pip install --no-cache-dir -e .[all]
+RUN rm -rf ~/.cache/pip /root/.cache
+
 
 # Entrypoint
 COPY entrypoint.sh /entrypoint.sh
