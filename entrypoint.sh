@@ -10,4 +10,5 @@ echo "Pulling LLaMA model..."
 ollama pull llama2
 
 echo "Starting MindsDB..."
-exec python -m mindsdb
+exec python -m mindsdb --api=http://0.0.0.0:47334
+
