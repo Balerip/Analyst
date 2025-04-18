@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
-
 echo "Starting MindsDB..."
-# Bind to all interfaces so Docker host can access it
-export MINDSDB_API_HOST=0.0.0.0
-
+# Correct environment variables for MindsDB
+export MINDSDB_HTTP_HOST=0.0.0.0
+export MINDSDB_HTTP_PORT=47334
+export MINDSDB_APIS='http,mysql'
 # Start MindsDB
 exec python -m mindsdb
