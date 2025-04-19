@@ -1,19 +1,26 @@
 # Base image
 FROM python:3.10-slim
-# Install dependencies
+
+# Install dependencies for MindsDB, PostgreSQL and Ollama
 RUN apt-get update && apt-get install -y \
- git curl sudo gnupg unzip libgomp1 && \
+ git curl sudo gnupg unzip libgomp1 \
+ ca-certificates postgresql-client && \
  rm -rf /var/lib/apt/lists/*
-# Install Ollama    
+
+# Install Ollama
 RUN curl -fsSL https://ollama.com/install.sh | sh
+
 # Set working directory
 WORKDIR /app
 COPY . /app
-# Install MindsDB (or your custom app)
+
+# Install MindsDB
 RUN pip install --upgrade pip && pip install --no-cache-dir -e .[all]
 RUN rm -rf ~/.cache/pip /root/.cache
-# Expose both MindsDB ports
-EXPOSE 47334 47335 11434
+
+# Expose ports for MindsDB, PostgreSQL and Ollama
+EXPOSE 47334 5432 11434
+
 # Entrypoint
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

@@ -12,11 +12,10 @@ cat > /root/mindsdb_config.json << EOL
       "host": "0.0.0.0",
       "port": "47334"
     },
-    "mysql": {
+    "postgres": {
       "host": "0.0.0.0",
-      "port": "47335",
-      "database": "mindsdb",
-      "ssl": true
+      "port": "5432",
+      "database": "mindsdb"
     }
   }
 }
