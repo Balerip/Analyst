@@ -1,9 +1,9 @@
 FROM python:3.10-slim
 
-# Install dependencies including PostgreSQL
+# Install dependencies (no PostgreSQL needed)
 RUN apt-get update && apt-get install -y \
     git curl sudo gnupg unzip libgomp1 \
-    ca-certificates postgresql postgresql-client && \
+    ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Ollama
@@ -17,8 +17,8 @@ COPY . /app
 RUN pip install --upgrade pip && pip install --no-cache-dir -e .[all]
 RUN rm -rf ~/.cache/pip /root/.cache
 
-# Expose ports (including PostgreSQL)
-EXPOSE 47334 5432 11434
+# Expose ports (only MindsDB and Ollama ports)
+EXPOSE 47334 11434
 
 # Entrypoint
 COPY entrypoint.sh /entrypoint.sh
