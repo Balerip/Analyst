@@ -2,17 +2,18 @@ from mindsdb.integrations.libs.const import HANDLER_TYPE
 
 from .__about__ import __version__ as version, __description__ as description
 try:
-    from .ollama_handler import OllamaHandler as Handler
+    from .huggingface_handler import HuggingFaceHandler as Handler
     import_error = None
 except Exception as e:
     Handler = None
     import_error = e
 
-title = 'Ollama'
-name = 'ollama'
+title = 'Hugging Face'
+name = 'huggingface'
 type = HANDLER_TYPE.ML
-icon_path = 'icon.png'
+icon_path = "icon.svg"
 permanent = False
+execution_method = 'subprocess_keep'
 
 __all__ = [
     'Handler', 'version', 'name', 'type', 'title', 'description', 'import_error', 'icon_path'
