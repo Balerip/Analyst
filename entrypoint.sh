@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
-echo "Starting MindsDB..."
+echo "Starting Ollama..."
+ollama serve &
 
+echo "Starting MindsDB..."
 # Create a custom config file to force binding to all interfaces
 cat > /root/mindsdb_config.json << EOL
 {
