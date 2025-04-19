@@ -24,4 +24,4 @@ cat > /root/mindsdb_config.json << EOL
 EOL
 
 # Start MindsDB with the custom config
-exec python -m mindsdb --config=/root/mindsdb_config.json
+exec python -m mindsdb --config=/root/mindsdb_config.json --api=http,postgres
