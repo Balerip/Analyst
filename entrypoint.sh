@@ -15,7 +15,9 @@ cat > /root/mindsdb_config.json << EOL
     "postgres": {
       "host": "0.0.0.0",
       "port": "5432",
-      "database": "mindsdb"
+      "database": "mindsdb",
+      "user": "postgres",  
+      "password": "postgres"
     }
   }
 }
