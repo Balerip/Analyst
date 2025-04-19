@@ -11,17 +11,10 @@ cat > /root/mindsdb_config.json << EOL
     "http": {
       "host": "0.0.0.0",
       "port": "47334"
-    },
-    "postgres": {
-      "host": "0.0.0.0",
-      "port": "5432",
-      "database": "mindsdb",
-      "user": "postgres",  
-      "password": "postgres"
     }
   }
 }
 EOL
 
 # Start MindsDB with the custom config
-exec python -m mindsdb --config=/root/mindsdb_config.json --api=http,postgres
+exec python -m mindsdb --config=/root/mindsdb_config.json
